@@ -1,0 +1,25 @@
+{
+  "name": "garbage-calendar",
+  "version": "1.0.0",
+  "description": "Simple colored timetable to determine who throws garbage on this week",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel index.js -o compiled"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cherurg/garbage-calendar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cherurg/garbage-calendar/issues"
+  },
+  "homepage": "https://github.com/cherurg/garbage-calendar#readme",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0"
+  }
+}
