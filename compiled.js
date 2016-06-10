@@ -114,7 +114,35 @@ function dayTitle(t0) {
   return t0.toString().split(' ')[2];
 }
 function monthTitle(t0) {
-  return t0.toLocaleString('en-us', { month: 'long' });
+  var num = +month(t0);
+  console.log(num);
+  switch (num - 1) {
+    case 0:
+      return 'January';
+    case 1:
+      return 'February';
+    case 2:
+      return 'March';
+    case 3:
+      return 'April';
+    case 4:
+      return 'May';
+    case 5:
+      return 'June';
+    case 6:
+      return 'July';
+    case 7:
+      return 'August';
+    case 8:
+      return 'September';
+    case 9:
+      return 'October';
+    case 10:
+      return 'November';
+    case 11:
+      return 'December';
+  }
+  // return t0.toLocaleString('en-us', { month: 'long' })
 }
 function yearTitle(t0) {
   return t0.toString().split(' ')[3];
