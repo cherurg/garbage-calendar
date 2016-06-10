@@ -51,6 +51,10 @@
       .RdYlGn .q9-11{fill:rgb(26,152,80)}
       .RdYlGn .q10-11{fill:rgb(0,104,55)}
 
+      .neighbour {
+        stroke: white;
+        stroke-width: 1px;
+      }
       .neighbour-0 {fill: #1f77b4}
       .neighbour-1 {fill: #ff7f03}
       .neighbour-2 {fill: #2ca02c}
@@ -142,7 +146,7 @@
           var row_level = Math.ceil((month(d) - 5) / (no_months_in_a_row));
           return (week_diff*cellSize) + row_level*cellSize*8 - cellSize/2 - shift_up;
         })
-        .attr('class', (d, i) => 'neighbour-' + ((week(d) - 2) % 4))
+        .attr('class', (d, i) => 'neighbour neighbour-' + ((week(d) - 2) % 4))
         .datum(format)
 
     var month_titles = svg.selectAll(".month-title")  // Jan, Feb, Mar and the whatnot
