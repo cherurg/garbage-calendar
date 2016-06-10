@@ -42,7 +42,7 @@
         .attr("height", cellSize)
         .attr("x", function(d) {
           var month_padding = 1.2 * cellSize*7 * ((month(d)-6) % (no_months_in_a_row));
-          return day(d) * cellSize + month_padding; 
+          return day(d) * cellSize + month_padding + 20; 
         })
         .attr("y", function(d) { 
           var week_diff = week(d) - week(new Date(year(d), month(d)-1, 1) );
@@ -52,6 +52,25 @@
         .attr('class', (d, i) => 'neighbour neighbour-' + ((week(d) - 2) % 4))
         .datum(format)
 
+    let weekBeginning = svg.selectAll('.first-day')
+      .data(d => d3.time.days(new Date(d, 5, 1), new Date(d + 1, 0, 1)).filter(d => day(d) === 0))
+      .enter().append('text')
+      .attr('class', 'first-day')
+      .text(d => day_of_month(d))
+      .attr('x', d => {
+        let offset = 0
+        if (day_of_month(d) < 10) {
+          offset = 5
+        }
+        var month_padding = 1.2 * cellSize*7 * ((month(d)-6) % (no_months_in_a_row))
+        return day(d) * cellSize + month_padding + offset 
+      })
+      .attr('y', d => { 
+        var week_diff = week(d) - week(new Date(year(d), month(d)-1, 1) );
+        var row_level = Math.ceil((month(d) - 5) / (no_months_in_a_row));
+        return (week_diff*cellSize) + row_level*cellSize*8 - cellSize/2 - shift_up + 20;
+      })
+
     var month_titles = svg.selectAll(".month-title")  // Jan, Feb, Mar and the whatnot
           .data(function(d) { 
             return d3.time.months(new Date(d, 5, 1), new Date(d + 1, 0, 1)); })
@@ -59,7 +78,7 @@
           .text(monthTitle)
           .attr("x", function(d, i) {
             var month_padding = 1.2 * cellSize*7* ((month(d)-6) % (no_months_in_a_row));
-            return month_padding + 60;
+            return month_padding + 80;
           })
           .attr("y", function(d, i) {
             var week_diff = week(d) - week(new Date(year(d), month(d)-1, 1) );
@@ -73,7 +92,7 @@
       .data(d => d3.time.months(new Date(d, 5, 1), new Date(d + 1, 0, 1)))
       .enter().append('text')
       .text('mon')
-      .attr('x', d => 1.2 * cellSize*7* ((month(d)-6) % (no_months_in_a_row)))
+      .attr('x', d => 1.2 * cellSize*7* ((month(d)-6) % (no_months_in_a_row)) + 20)
       .attr('y', d => {
         var week_diff = week(d) - week(new Date(year(d), month(d)-1, 1) )
         var row_level = Math.ceil((month(d) - 5) / (no_months_in_a_row))
