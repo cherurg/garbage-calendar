@@ -13,15 +13,16 @@ var day = function () {
     var day = func(d) - 1;
     return day >= 0 ? day : 6;
   };
-}(),
-    // day of the week
-day_of_month = d3.time.format("%e"); // day of the month
-day_of_year = d3.time.format("%j");
-week = function week(d) {
+}(); // day of the week
+var day_of_month = d3.time.format("%e"); // day of the month
+var day_of_year = d3.time.format("%j");
+var week = function week(d) {
   return d3.time.mondayOfYear(d);
-}, // week number of the year
-month = d3.time.format("%m"), // month number
-year = d3.time.format("%Y"), percent = d3.format(".1%"), format = d3.time.format("%Y-%m-%d");
+}; // week number of the year
+var month = d3.time.format("%m"); // month number
+var year = d3.time.format("%Y");
+var percent = d3.format(".1%");
+var format = d3.time.format("%Y-%m-%d");
 
 var color = d3.scale.quantize().domain([-.05, .05]).range(d3.range(11).map(function (d) {
   return "q" + d + "-11";

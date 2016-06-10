@@ -5,20 +5,20 @@
     var no_months_in_a_row = Math.floor(width / (cellSize * 7 + 50));
     var shift_up = cellSize * 3;
 
-    var day = (() => { 
+    let day = (() => { 
           let func = d3.time.format("%w")
           return d => {
             let day = func(d) - 1
             return day >= 0 ? day : 6
           }
-        })(), // day of the week
-        day_of_month = d3.time.format("%e") // day of the month
-        day_of_year = d3.time.format("%j")
-        week = d => d3.time.mondayOfYear(d), // week number of the year
-        month = d3.time.format("%m"), // month number
-        year = d3.time.format("%Y"),
-        percent = d3.format(".1%"),
-        format = d3.time.format("%Y-%m-%d");
+        })() // day of the week
+    let day_of_month = d3.time.format("%e") // day of the month
+    let day_of_year = d3.time.format("%j")
+    let week = d => d3.time.mondayOfYear(d) // week number of the year
+    let month = d3.time.format("%m") // month number
+    let year = d3.time.format("%Y")
+    let percent = d3.format(".1%")
+    let format = d3.time.format("%Y-%m-%d")
 
     var color = d3.scale.quantize()
         .domain([-.05, .05])
